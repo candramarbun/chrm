@@ -1,0 +1,83 @@
+@extends('template.admin')
+@section('content-header')
+   <h1>
+   	Add Customer
+   </h1>
+@endsection
+@section('content')
+	<div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Add Customer</h3>
+        </div>
+        {!! Form::open(array('route' => 'customer_store','method'=>'POST' ,'role'=>'form')) !!}
+        <div class="box-body">
+            <div class="form-group">
+                {!! Form::label('name', 'Customer:', ['class' => 'control-label']) !!}
+                {!! Form::text('customer_name', null, [
+                    'class'                         => 'form-control',
+                    'placeholder'                   => 'Customer Name',
+                    'id'                            => 'customer_name',
+                ]) !!}
+            </div>
+             <div class="form-group">
+                {!! Form::label('address', 'Address:', ['class' => 'control-label']) !!}
+                {!! Form::text('customer_address', null, [
+                    'class'                         => 'form-control',
+                    'placeholder'                   => 'Address',
+                    'id'                            => 'address',
+                ]) !!}
+            </div>
+             <div class="form-group">
+                {!! Form::label('phone', 'Phone:', ['class' => 'control-label']) !!}
+                {!! Form::text('customer_phone', null, [
+                    'class'                         => 'form-control',
+                    'placeholder'                   => 'Phone',
+                    'id'                            => 'phone',
+                ]) !!}
+            </div>
+
+        </div>
+        {{-- =======================Contact========== --}}
+        <div class="box box-info">
+            <div class="box-body  contact">
+                
+            </div>
+            <div class="box-footer clearfix">
+                <a class="btn btn-sm btn-info btn-flat pull-left" onclick="append()">Add Contact Related</a>
+            </div>
+        </div>
+            <!-- /.box-body -->
+        <div class="box-footer clearfix">
+          <button class="btn btn-sm btn-info btn-flat pull-left" type="submit">Save</button>
+        </div>
+        {!! Form::close() !!}
+            <!-- /.box-footer -->
+  </div>
+  @push('js')
+  <script type="text/javascript">
+  function append() {
+            $('<h4>Add Related Contact</h4><hr><div class="form-group">{!! Form::label('contact_name', 'Contact Name:', ['class' => 'control-label']) !!}{!! Form::text('contact_name[]', null, [
+                        'class'                         => 'form-control',
+                        'placeholder'                   => 'Contact Name',
+                        'id'                            => 'contact_name',
+                    ]) !!}</div><div class="form-group">{!! Form::label('contact_address', 'Contact Address:', ['class' => 'control-label']) !!}{!! Form::text('contact_address[]', null, [
+                        'class'                         => 'form-control',
+                        'placeholder'                   => 'Contact Address',
+                        'id'                            => 'contact_address',
+                    ]) !!}</div><div class="form-group">{!! Form::label('phone', 'Phone:', ['class' => 'control-label']) !!}{!! Form::text('contact_phone[]', null, [
+                        'class'                         => 'form-control',
+                        'placeholder'                   => 'Phone',
+                        'id'                            => 'phone',
+                    ]) !!}</div><div class="form-group">{!! Form::label('contact_email', 'Contact Email:', ['class' => 'control-label']) !!}{!! Form::text('contact_email[]', null, [
+                        'class'                         => 'form-control',
+                        'placeholder'                   => 'Email',
+                        'id'                            => 'contact_email',
+                    ]) !!}</div><div class="form-group">{!! Form::label('contact_others', 'Other Info:', ['class' => 'control-label']) !!}{!! Form::text('contact_others[]', null, [
+                        'class'                         => 'form-control',
+                        'placeholder'                   => 'Other Info',
+                        'id'                            => 'tthers',
+                    ]) !!}</div>').appendTo(".contact");
+        };
+  </script>
+  @endpush
+@endsection
