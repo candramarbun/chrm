@@ -18,5 +18,5 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: ghcr.io
-          repository: candramarbun/cksproject
+          repository: candramarbun/lara-pos
           tag_with_ref: true
