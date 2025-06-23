@@ -1,22 +1,33 @@
-name: Publish Docker image
+name: Publish Docker Image
 on:
   push:
     branches:
-      - develop
+      - master
+
 jobs:
   push_to_registry:
-    name: Push Docker image to GitHub Packages
+    name: Push Docker Image to GitHub Container Registry (GHCR)
     runs-on: ubuntu-latest
+
     steps:
+      # Step 1: Check out the repository
       - name: Check out the repo
         uses: actions/checkout@v2
-      - name: Test Dockefile
-        run: ls && cat Dockerfile
-      - name: Push to GitHub Packages
-        uses: docker/build-push-action@v1
+
+      # Step 2: Set up Docker Buildx
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      
+      - name: Log in to registry
+        # This is where you will update the PAT to GITHUB_TOKEN
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      # Step 4: Build and Push Docker image for ARM64 (aarch64)
+      - name: Build and Push to GitHub Packages (ARM64)
+        uses: docker/build-push-action@v2
         with:
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          registry: ghcr.io
-          repository: candramarbun/lara-pos
-          tag_with_ref: true
+          context: .
+          file: Dockerfile
+          platforms: linux/arm64  # Build specifically for ARM64 (aarch64) architecture
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/lara-pos:latest
