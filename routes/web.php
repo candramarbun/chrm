@@ -250,3 +250,269 @@ Route::post('contact/delete', 'CustomerController@deleteContact')->name('contact
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+// Inventory Management
+Route::get('inventory',[
+    'uses' => 'InventoryController@index',
+    'as' => 'inventory_index',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::get('inventory/add',[
+    'uses' => 'InventoryController@create',
+    'as' => 'inventory_create',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::post('inventory/add',[
+    'uses' => 'InventoryController@store',
+    'as' => 'inventory_store',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::get('inventory/edit/{id}',[
+    'uses' => 'InventoryController@edit',
+    'as' => 'inventory_edit',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::patch('inventory/edit/{id}',[
+    'uses' => 'InventoryController@update',
+    'as' => 'inventory_update',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::delete('inventory/delete/{id}',[
+    'uses' => 'InventoryController@destroy',
+    'as' => 'inventory_delete',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+
+// Inventory Categories
+Route::get('inventory/categories', [
+    'uses' => 'InventoryCategoryController@index',
+    'as' => 'inventory_categories.index',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::get('inventory/categories/create', [
+    'uses' => 'InventoryCategoryController@create',
+    'as' => 'inventory_categories.create',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::post('inventory/categories', [
+    'uses' => 'InventoryCategoryController@store',
+    'as' => 'inventory_categories.store',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::get('inventory/categories/{id}/edit', [
+    'uses' => 'InventoryCategoryController@edit',
+    'as' => 'inventory_categories.edit',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::patch('inventory/categories/{id}', [
+    'uses' => 'InventoryCategoryController@update',
+    'as' => 'inventory_categories.update',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::delete('inventory/categories/{id}', [
+    'uses' => 'InventoryCategoryController@destroy',
+    'as' => 'inventory_categories.destroy',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+// Inventory Locations
+Route::get('inventory/locations', [
+    'uses' => 'InventoryLocationController@index',
+    'as' => 'inventory_locations.index',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::get('inventory/locations/create', [
+    'uses' => 'InventoryLocationController@create',
+    'as' => 'inventory_locations.create',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::post('inventory/locations', [
+    'uses' => 'InventoryLocationController@store',
+    'as' => 'inventory_locations.store',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::get('inventory/locations/{id}/edit', [
+    'uses' => 'InventoryLocationController@edit',
+    'as' => 'inventory_locations.edit',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::patch('inventory/locations/{id}', [
+    'uses' => 'InventoryLocationController@update',
+    'as' => 'inventory_locations.update',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::delete('inventory/locations/{id}', [
+    'uses' => 'InventoryLocationController@destroy',
+    'as' => 'inventory_locations.destroy',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+// Inventory Suppliers
+Route::get('inventory/suppliers', [
+    'uses' => 'SupplierController@index',
+    'as' => 'inventory_suppliers.index',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::get('inventory/suppliers/create', [
+    'uses' => 'SupplierController@create',
+    'as' => 'inventory_suppliers.create',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::post('inventory/suppliers', [
+    'uses' => 'SupplierController@store',
+    'as' => 'inventory_suppliers.store',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::get('inventory/suppliers/{id}/edit', [
+    'uses' => 'SupplierController@edit',
+    'as' => 'inventory_suppliers.edit',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::patch('inventory/suppliers/{id}', [
+    'uses' => 'SupplierController@update',
+    'as' => 'inventory_suppliers.update',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::delete('inventory/suppliers/{id}', [
+    'uses' => 'SupplierController@destroy',
+    'as' => 'inventory_suppliers.destroy',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+// Purchase Orders
+Route::get('purchase_orders', [
+    'uses' => 'PurchaseOrderController@index',
+    'as' => 'purchase_orders.index',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::get('purchase_orders/create', [
+    'uses' => 'PurchaseOrderController@create',
+    'as' => 'purchase_orders.create',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::post('purchase_orders', [
+    'uses' => 'PurchaseOrderController@store',
+    'as' => 'purchase_orders.store',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::get('purchase_orders/{id}', [
+    'uses' => 'PurchaseOrderController@show',
+    'as' => 'purchase_orders.show',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::get('purchase_orders/{id}/edit', [
+    'uses' => 'PurchaseOrderController@edit',
+    'as' => 'purchase_orders.edit',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::patch('purchase_orders/{id}', [
+    'uses' => 'PurchaseOrderController@update',
+    'as' => 'purchase_orders.update',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::delete('purchase_orders/{id}', [
+    'uses' => 'PurchaseOrderController@destroy',
+    'as' => 'purchase_orders.destroy',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+// Sales
+Route::get('sales', [
+    'uses' => 'SaleController@index',
+    'as' => 'sales.index',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::get('sales/create', [
+    'uses' => 'SaleController@create',
+    'as' => 'sales.create',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::post('sales', [
+    'uses' => 'SaleController@store',
+    'as' => 'sales.store',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::get('sales/{id}/edit', [
+    'uses' => 'SaleController@edit',
+    'as' => 'sales.edit',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::patch('sales/{id}', [
+    'uses' => 'SaleController@update',
+    'as' => 'sales.update',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);
+
+Route::delete('sales/{id}', [
+    'uses' => 'SaleController@destroy',
+    'as' => 'sales.destroy',
+    'middleware' => 'roles',
+    'roles' => ['admin','author']
+]);

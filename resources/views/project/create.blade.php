@@ -55,7 +55,7 @@
                         'class' => 'form-control', 
                         'id' => 'project_category', 
                         'placeholder' => 'Project Category']) !!}
-                    {{-- <select class="form-control"  id="project_category" name="project_category" required> </select> --}}
+                    <!-- <select class="form-control"  id="project_category" name="project_category" required> </select> -->
             </div>
 
             <div class="form-group">
