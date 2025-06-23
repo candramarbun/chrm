@@ -1,0 +1,24 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class PurchaseOrderItem extends Model
+{
+    use HasFactory;
+    protected $fillable = [
+        'purchase_order_id', 'inventory_id', 'quantity', 'unit_price'
+    ];
+
+    public function purchaseOrder()
+    {
+        return $this->belongsTo(PurchaseOrder::class);
+    }
+
+    public function inventory()
+    {
+        return $this->belongsTo(Inventory::class);
+    }
+}

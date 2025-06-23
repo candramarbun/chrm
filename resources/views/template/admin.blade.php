@@ -114,6 +114,28 @@
             <i class="fa fa-group"></i> <span>User Management</span></a>
         </li>
         @endif
+        @if (!empty($halaman) && $halaman == 'inventory')
+    <li class="active treeview">
+@else
+    <li class="treeview">
+@endif
+    <a href="#">
+        <i class="fa fa-cube"></i> <span>Inventory</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href="{{ route('inventory_index') }}"><i class="fa fa-circle-o"></i> Items</a></li>
+        <li><a href="{{ route('inventory_categories.index') }}"><i class="fa fa-circle-o"></i> Categories</a></li>
+        <li><a href="{{ route('inventory_locations.index') }}"><i class="fa fa-circle-o"></i> Locations</a></li>
+        <li><a href="{{ route('inventory_suppliers.index') }}"><i class="fa fa-circle-o"></i> Suppliers</a></li>
+        <li><a href="{{ route('purchase_orders.index') }}"><i class="fa fa-circle-o"></i> Purchase Orders</a></li>
+        <li><a href="{{ route('sales.index') }}"><i class="fa fa-circle-o"></i> Sales</a></li>
+
+    </ul>
+</li>
+
       </ul>
       @endif
     </section>
