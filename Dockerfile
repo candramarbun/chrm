@@ -1,7 +1,7 @@
 # Use official PHP 8.1 image with Apache
 FROM php:8.1-apache
 
-# Install system dependencies and PHP extensions
+# Install system dependencies with PostgreSQL headers
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     libzip-dev \
+    libpq-dev \
     curl \
     && docker-php-ext-install pdo_pgsql mbstring exif pcntl bcmath gd zip
 
@@ -30,12 +31,4 @@ COPY . .
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|' /etc/apache2/sites-available/000-default.conf
 
 # Set correct permissions for Laravel storage and cache
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html/storage \
-    && chmod -R 755 /var/www/html/bootstrap/cache
-
-# Expose port 80
-EXPOSE 80
-
-# Start Apache server
-CMD ["apache2-foreground"]
+RUN chown -R
