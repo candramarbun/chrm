@@ -1,7 +1,7 @@
 # Use official PHP 8.1 image with Apache
 FROM php:8.1-apache
 
-# Install system dependencies
+# Install system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     libzip-dev \
     curl \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
+    && docker-php-ext-install pdo_pgsql mbstring exif pcntl bcmath gd zip
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
