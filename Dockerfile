@@ -1,4 +1,4 @@
-# Use official PHP 8.0 image with Apache
+# Use official PHP 8.1 image with Apache
 FROM php:8.1-apache
 
 # Install system dependencies
@@ -25,6 +25,9 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Copy Laravel project files
 COPY . .
+
+# Fix Apache to serve from /public directory
+RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|' /etc/apache2/sites-available/000-default.conf
 
 # Set correct permissions for Laravel storage and cache
 RUN chown -R www-data:www-data /var/www/html \
