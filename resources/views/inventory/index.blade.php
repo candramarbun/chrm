@@ -21,6 +21,7 @@
                                 <th>Name</th>
                                 <th>Quantity</th>
                                 <th>Unit Price</th>
+                                <th>Sell Price</th>
                                 <th>Category</th>
                                 <th>Location</th>
                                 <th>Action</th>
@@ -32,7 +33,8 @@
                                     <td>{{ $inventory->code }}</td>
                                     <td>{{ $inventory->name }}</td>
                                     <td>{{ $inventory->quantity }}</td>
-                                    <td>{{ $inventory->unit_price }}</td>
+                                    <td>{{  number_format($inventory->unit_price, 2)}}</td>
+                                    <td>{{ number_format($inventory->sell_price, 2) }}</td>
                                     <td>{{ $inventory->category ? $inventory->category->name : '' }}</td>
                                     <td>{{ $inventory->location ? $inventory->location->name : '' }}</td>
                                     <td>

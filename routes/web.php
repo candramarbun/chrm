@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'WelcomeController@index')->name('welcome');
 
 Route::get('dashboard',[
 	'uses'	=>'PagesController@dashboard',
@@ -516,3 +517,13 @@ Route::delete('sales/{id}', [
     'middleware' => 'roles',
     'roles' => ['admin','author']
 ]);
+
+// POS Routes
+Route::group(['prefix' => 'pos', 'as' => 'pos.'], function () {
+    Route::get('/', 'PosController@index')->name('index');
+    Route::get('/search', 'PosController@search')->name('search');
+    Route::post('/add-to-cart', 'PosController@addToCart')->name('addToCart');
+    Route::post('/update-cart', 'PosController@updateCart')->name('updateCart');
+    Route::post('/remove-from-cart', 'PosController@removeFromCart')->name('removeFromCart');
+    Route::post('/checkout', 'PosController@checkout')->name('checkout');
+});

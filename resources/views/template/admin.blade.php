@@ -31,9 +31,9 @@
     <!-- Logo -->
     <a href="{{route('project_index')}}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>CKS</b></span>
+      <span class="logo-mini"><b>KOPIPOS</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>CKS</b>Project</span>
+      <span class="logo-lg"><b>KOPI</b>Pos</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -75,7 +75,11 @@
             @else
             <li><a href="{{ route('dashboard')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         @endif
-        
+        <li>
+            <a href="{{ route('pos.index') }}">
+                <i class="fa fa-shopping-cart"></i> <span>Point of Sale</span>
+            </a>
+        </li>
         @if (!empty($halaman) && $halaman == 'customer' || (!empty($halaman) && $halaman == 'category')|| (!empty($halaman) && $halaman == 'project')) 
           <li class="active treeview">
           @else
@@ -159,7 +163,7 @@
     <div class="pull-right hidden-xs">
       <a href="https://www.fb.com/candra.marbun">Can</a>
     </div>
-    <strong>Copyright &copy; 2017 PT.Citra Karya Semesta.</strong> 
+    <strong>Copyright &copy; 2017 KopiPos.com</strong> 
   </footer>
 </div>
 <!-- ./wrapper -->
