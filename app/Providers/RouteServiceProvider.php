@@ -87,4 +87,6 @@ class RouteServiceProvider extends ServiceProvider
             require base_path('routes/api.php');
         });
     }
+
+    public const HOME = '/home';  // or whatever your home route is
 }

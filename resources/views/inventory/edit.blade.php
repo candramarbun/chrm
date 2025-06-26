@@ -40,6 +40,10 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    {!! Form::label('sell_price', 'Sell Price:') !!}
+                    {!! Form::number('sell_price', null, ['class' => 'form-control', 'step' => '0.01', 'min' => '0']) !!}
+                </div>
+                <div class="form-group">
                     {!! Form::label('category_id', 'Category:', ['class' => 'col-sm-2 control-label']) !!}
                     <div class="col-sm-10">
                         {!! Form::select('category_id', $categories->pluck('name', 'id'), null, ['class' => 'form-control', 'placeholder' => 'Select Category', 'required']) !!}

@@ -2,7 +2,7 @@
 @section('loginpage')
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>CKS</b>Project</a>
+    <a href="#"><b>KOPI</b>Pos</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

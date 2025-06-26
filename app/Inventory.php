@@ -10,7 +10,7 @@ class Inventory extends Model
     use HasFactory;
     protected $fillable = [
         'name', 'code', 'description', 'quantity', 
-        'unit_price', 'category_id', 'location_id', 'supplier_id'
+        'unit_price', 'sell_price', 'category_id', 'location_id', 'supplier_id'
     ];
 
     public function category()
